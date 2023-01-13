@@ -1,0 +1,27 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Launch development",
+      "type": "shell",
+      "command": "docker-compose up",
+      "isBackground": true,
+      "presentation": {
+          "panel": "dedicated",
+          "showReuseMessage": false,
+          "close": false,
+        }
+    },
+    {
+      "label": "Stop development",
+      "type": "shell",
+      "command": "docker-compose down",
+      "presentation": {
+          "panel": "dedicated",
+          "reveal": "silent",
+          "showReuseMessage": false,
+          "close": true,
+        }
+    }
+  ]
+}   

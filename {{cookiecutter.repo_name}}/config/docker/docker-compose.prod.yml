@@ -1,0 +1,12 @@
+version: "3"
+services:
+ backend:
+    image: {{cookiecutter.project_name}}_prod
+    container_name:  {{cookiecutter.project_name}}_prod
+    build: 
+      context: .
+      dockerfile: ./config/docker/Dockerfile.prod
+    entrypoint:
+      - uwsgi
+      - --ini-paste
+      - ./config/production.ini

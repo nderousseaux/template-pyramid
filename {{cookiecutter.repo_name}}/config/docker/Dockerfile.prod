@@ -1,0 +1,23 @@
+FROM python:3.9
+
+ADD . /app
+WORKDIR /app
+
+RUN apt update && apt install -y nginx
+
+RUN pip install --upgrade pip setuptools
+RUN pip install -r requirements.txt
+RUN pip install uwsgi
+RUN python setup.py install
+
+RUN ln -sf /app/config/nginx/nginx.conf /etc/nginx/nginx.conf
+RUN ln -sf /app/congig/nginx/{{cookiecutter.project_name}}.nginx /etc/nginx/sites-available/{{cookiecutter.project_name}}
+RUN ln -sf /etc/nginx/sites-available/{{cookiecutter.project_name}} /etc/nginx/sites-enabled/{{cookiecutter.project_name}}
+RUN /etc/init.d/nginx restart
+
+RUN adduser --no-create-home uwsgi
+USER uwsgi
+
+EXPOSE ${BACKEND_PORT:-8080}
+
+CMD [ "uwsgi --ini-paste-logged ./config/production.ini" ]
