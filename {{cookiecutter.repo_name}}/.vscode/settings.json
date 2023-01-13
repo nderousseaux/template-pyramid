@@ -1,0 +1,16 @@
+{
+	// On desactive import error pour pylint
+	"python.linting.pylintArgs": [
+		"--disable=import-error",
+		"--rcfile=.pylintrc"
+	],
+	// On desactive import error pour pylance
+	"python.analysis.diagnosticSeverityOverrides": {
+		"reportMissingImports": "none",
+		"reportMissingModuleSource": "none"
+	},
+	// On cache les dossiers __pycache__
+	"files.exclude": {
+		"**/__pycache__": true
+	}
+}

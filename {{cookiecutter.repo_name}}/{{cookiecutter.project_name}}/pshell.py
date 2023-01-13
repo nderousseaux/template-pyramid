@@ -1,7 +1,12 @@
+""" pshell command for the {{ cookiecutter.project_name }} application.
+"""
+
 from . import models
 
-
 def setup(env):
+    """ Setup the environment for the pshell command.
+    """
+
     request = env['request']
 
     # start a transaction

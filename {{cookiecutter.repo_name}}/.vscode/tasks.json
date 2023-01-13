@@ -22,6 +22,29 @@
           "showReuseMessage": false,
           "close": true,
         }
+    },
+    {
+      "label": "Lint whole project",
+      "type": "shell",
+      "command": "pylint --rcfile=.pylintrc --msg-template \"{path}:{line}:{column}:{category}:{symbol} - {msg}\" {{ cookiecutter.project_name }}",
+      "windows": {
+          "command": "pylint --rcfile=.pylintrc --msg-template \"{path}:{line}: {column}:{category}:{symbol} - {msg}\" {{ cookiecutter.project_name }}"
+      },
+      "presentation": {
+          "reveal": "never",
+          "panel": "shared"
+      },
+      "problemMatcher": {
+          "owner": "python",
+          "pattern": {
+              "regexp": "^(.+):(\\d+):(\\d+):(\\w+):(.*)$",
+              "file": 1,
+              "line": 2,
+              "column": 3,
+              "severity": 4,
+              "message": 5
+          }
+      }
     }
   ]
 }   

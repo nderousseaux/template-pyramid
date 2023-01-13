@@ -1,3 +1,6 @@
+""" The models package.
+"""
+
 from sqlalchemy import engine_from_config
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import configure_mappers
@@ -13,10 +16,15 @@ configure_mappers()
 
 
 def get_engine(settings, prefix='sqlalchemy.'):
+    """ Return a SQLAlchemy engine.
+    """
+
     return engine_from_config(settings, prefix)
 
 
 def get_session_factory(engine):
+    """ Return a SQLAlchemy session factory.
+    """
     factory = sessionmaker()
     factory.configure(bind=engine)
     return factory
@@ -53,7 +61,7 @@ def get_tm_session(session_factory, transaction_manager, request=None):
     "info" dict.  The "info" dict is the official namespace for developers to
     stash session-specific information.  For more information, please see the
     SQLAlchemy docs:
-    https://docs.sqlalchemy.org/en/stable/orm/session_{{cookiecutter.project_name}}.html#sqlalchemy.orm.session.Session.params.info
+    https://docs.sqlalchemy.org/en/stable/orm/session_{{ cookiecutter.project_name }}.html#sqlalchemy.orm.session.Session.params.info
 
     By placing the active ``request`` in the "info" dict, developers will be
     able to access the active Pyramid request from an instance of an SQLAlchemy
@@ -68,7 +76,7 @@ def get_tm_session(session_factory, transaction_manager, request=None):
           dbsession = sa_Session.object_session(dbObject)
           request = dbsession.info["request"]
 
-    - Modern SQLAlchemy. This uses the "Runtime Inspection {{cookiecutter.project_name}}":
+    - Modern SQLAlchemy. This uses the "Runtime Inspection {{ cookiecutter.project_name }}":
 
       .. code-block:: python
 

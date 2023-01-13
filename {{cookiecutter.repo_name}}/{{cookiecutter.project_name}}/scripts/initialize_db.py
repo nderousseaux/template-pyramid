@@ -1,3 +1,6 @@
+""" Initialize the database with some data.
+"""
+
 import argparse
 import sys
 
@@ -12,11 +15,14 @@ def setup_models(dbsession):
     Add or update models / fixtures in the database.
 
     """
-    model = models.mymodel.MyModel(name='one', value=1)
+    model = models.mymodel.MyModel(name='one', value=1) # pylint: disable=unexpected-keyword-arg
     dbsession.add(model)
 
 
 def parse_args(argv):
+    """ Parse command line arguments.
+    """
+
     parser = argparse.ArgumentParser()
     parser.add_argument(
         'config_uri',
@@ -25,7 +31,12 @@ def parse_args(argv):
     return parser.parse_args(argv[1:])
 
 
-def main(argv=sys.argv):
+def main(argv=None):
+    """ Main entry point.
+    """
+    if argv is None:
+        argv = sys.argv
+
     args = parse_args(argv)
     setup_logging(args.config_uri)
     env = bootstrap(args.config_uri)

@@ -1,3 +1,6 @@
+""" This module contains the base class for all models, as well as the metadata
+"""
+
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.schema import MetaData
 

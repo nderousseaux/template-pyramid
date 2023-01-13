@@ -5,6 +5,7 @@
 ### Developpement
 - Copy `.env.example` to `.env` and fill it with your parameters
 - Run `docker-compose up` to start the containers or just press f5 if you are using vscode for debug.
+- Lint your code with `pylint {{ cookiecutter.project_name }}`, or with the task `Lint whole project` in vscode.
 
 ### Production
 - Copy `.env.example` to `.env` and fill it with your parameters
