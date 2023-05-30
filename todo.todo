@@ -1,0 +1,14 @@
+- Mettre en place la structure habituelle
+	- marshamallow
+	- cornice
+- Mettre en place les migrations + bdd
+- Mettre en place l'authentification
+- Mettre en place les tests
+- postman
+Warning :  erreur quand on lance en mode non-debug
+- log en production nginx
+- serveur de logs
+- Créer le serveur de documentation python
+- CI/CD
+- Structure du git
+
